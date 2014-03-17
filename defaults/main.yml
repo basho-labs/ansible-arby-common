@@ -1,0 +1,17 @@
+---
+arby_configs_dir: "{{ arby_staging_dir }}/server_configs"
+arby_hosts: riak*
+arby_end_time: "{{ lookup('file', '/tmp/arby-end-timestamp') }}"
+arby_graph_definition: "{{ lookup('env','ARBY_GRAPH_GRAPHDEF') }}"
+arby_metrics_dir: "{{ arby_staging_dir }}/server_metrics"
+arby_report_dir: "{{ arby_staging_dir }}/report"
+arby_report_template_path: "{{ lookup('env','ARBY_REPORT_TEMPLATE') }}"
+arby_staging_dir: "{{ benchmark_results_base_dir }}/{{ benchmark_label }}-{{ cluster_name}}-{{ benchmark_suite_set }}-{{ arby_start_time }}"
+arby_start_time: "{{ lookup('file', '/tmp/arby-start-timestamp') }}"
+benchmark_label: simple
+benchmark_results_base_dir: /tmp/test_results
+benchmark_suite_set: test
+benchmarks_dir: "{{ arby_staging_dir }}/benchmark_results"
+cluster_name: test-cluster
+graphite_ip: "{{ hostvars[groups['collectd_server'][0]]['ansible_' ~ collectd_iface]['ipv4']['address'] }}"
+arby_peparer: admin@company.com
